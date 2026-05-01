@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# Julumos
 
 ```sh
 npm create astro@latest -- --template basics
