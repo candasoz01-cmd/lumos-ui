@@ -6,6 +6,7 @@
 <br><br>
 <button onclick="send()">Send</button>
 <pre id="out" style="margin:24px auto 0;max-width:700px;text-align:left;white-space:pre-wrap;"></pre>
+
 <script>
 async function send(){
   const out = document.getElementById("out");
@@ -16,8 +17,7 @@ async function send(){
       method:"POST",
       headers:{
         "Content-Type":"application/json",
-        "X-Kando-Token":"test123",
-        "ngrok-skip-browser-warning":"1"
+        "X-Kando-Token":"test123"
       },
       body: JSON.stringify({message:m})
     });
