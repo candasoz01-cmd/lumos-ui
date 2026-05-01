@@ -1,4 +1,5 @@
 <html>
+<head><meta charset="UTF-8" /></head>
 <body style="background:#0b1020;color:white;text-align:center;margin-top:100px;font-family:sans-serif;">
 <h1>Lumos Panel</h1>
 <input id="msg" style="width:420px;padding:10px;" placeholder="Sorunu yaz">
@@ -15,12 +16,18 @@ async function send(){
       method:"POST",
       headers:{
         "Content-Type":"application/json",
-        "X-Kando-Token":"test123"
+        "X-Kando-Token":"test123",
+        "ngrok-skip-browser-warning":"1"
       },
       body: JSON.stringify({message:m})
     });
-    const j = await r.json();
-    out.innerText = j.reply || j.error || JSON.stringify(j, null, 2);
+    const text = await r.text();
+    try {
+      const j = JSON.parse(text);
+      out.innerText = j.reply || j.error || JSON.stringify(j, null, 2);
+    } catch {
+      out.innerText = "HTTP " + r.status + "\n" + text;
+    }
   } catch(e) {
     out.innerText = "ERROR: " + e.message;
   }
