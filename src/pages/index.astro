@@ -1,32 +1,123 @@
-<html>
+<!DOCTYPE html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lumos</title>
-<meta name="description" content="Lumos" />
+<meta name="description" content="Lumos — Kıbrıs yayını" />
 </head>
-<body style="background:#0b1020;color:white;text-align:center;margin-top:100px;font-family:sans-serif;">
-<h1>Lumos</h1>
-<input id="msg" style="width:420px;padding:10px;" placeholder="Sorunu yaz">
-<br><br>
-<button onclick="sendMessage()">Send</button>
-<pre id="out" style="margin:24px auto 0;max-width:700px;text-align:left;white-space:pre-wrap;"></pre>
-<script>
-async function sendMessage(){
-  const out = document.getElementById("out");
-  out.innerText = "Gönderiliyor...";
-  try {
-    const m = document.getElementById("msg").value;
-    const r = await fetch("https://lumos-core-2.onrender.com/chat", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({message:m})
-    });
-    const text = await r.text();
-    out.innerText = "HTTP " + r.status + "\n" + text;
-  } catch(e) {
-    out.innerText = "ERROR: " + e.message;
-  }
-}
-</script>
+<body>
+<div class="stripe stripe--top" aria-hidden="true"></div>
+<main class="field">
+	<div class="emblem" aria-hidden="true">
+		<span class="crescent"></span>
+		<span class="star"></span>
+	</div>
+	<h1 class="title">Lumos</h1>
+	<p class="tagline">Kıbrıs yayını aktif.</p>
+</main>
+<div class="stripe stripe--bottom" aria-hidden="true"></div>
+<style is:global>
+	:root {
+		--tr-red: #c8102e;
+		--paper: #ffffff;
+		--ink: #141414;
+		--muted: #3d3d3d;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		margin: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		background: var(--paper);
+		color: var(--ink);
+		font-family:
+			system-ui,
+			-apple-system,
+			"Segoe UI",
+			Roboto,
+			"Helvetica Neue",
+			Arial,
+			sans-serif;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.stripe {
+		flex: 0 0 clamp(3rem, 14vh, 6rem);
+		background: var(--tr-red);
+	}
+
+	.field {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: clamp(1.5rem, 5vw, 2.5rem);
+		gap: 1.25rem;
+		text-align: center;
+		background: var(--paper);
+	}
+
+	.emblem {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35rem;
+		margin-bottom: 0.25rem;
+	}
+
+	/* Ay: iki daire örtüşmesi — emoji yok */
+	.crescent {
+		display: block;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 50%;
+		background: var(--tr-red);
+		box-shadow: 0.55rem 0 0 0 var(--paper);
+		transform: rotate(-18deg);
+	}
+
+	/* Yıldız: clip-path — emoji yok */
+	.star {
+		display: block;
+		width: 2.25rem;
+		height: 2.25rem;
+		background: var(--tr-red);
+		clip-path: polygon(
+			50% 0%,
+			61% 35%,
+			100% 35%,
+			69% 59%,
+			82% 100%,
+			50% 74%,
+			18% 100%,
+			31% 59%,
+			0% 35%,
+			39% 35%
+		);
+		margin-left: -0.15rem;
+	}
+
+	.title {
+		margin: 0;
+		font-size: clamp(1.75rem, 5vw, 2.25rem);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.tagline {
+		margin: 0;
+		font-size: 1.0625rem;
+		font-weight: 500;
+		color: var(--muted);
+	}
+</style>
 </body>
 </html>
