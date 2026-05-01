@@ -8,33 +8,55 @@
 </head>
 <body>
 <div class="page">
-	<div class="flag-card" role="img" aria-label="Üst ve alt ince kırmızı şeritler, ortada beyaz alan ve ay-yıldız">
-		<div class="flag-stripe flag-stripe--top" aria-hidden="true"></div>
-		<div class="flag-field">
-			<div class="emblem-wrap">
+	<div class="flag-card" role="img" aria-label="KKTC tarzı bayrak: üst-alt kırmızı şerit, ortada hilal ve yıldız">
+		<svg
+			class="flag-svg"
+			viewBox="0 0 300 200"
+			width="300"
+			height="200"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			preserveAspectRatio="xMidYMid meet"
+		>
+			<defs>
+				<clipPath id="lumos-white-band">
+					<rect x="0" y="22" width="300" height="156" />
+				</clipPath>
 				<!--
-				  Hilal: kırmızı tam daire + maske (siyah daire) ile beyaz alanı “ısırmış” gerçek hilal.
-				  Sol tarafta kalır; yıldız sağda, küçük ve ayrı.
+				  Hilal: kırmızı disk + maske — maske merkezi kırmızı merkeze yakın,
+				  r yeterince büyük ki merkez maskelenir (dolgun top kalmaz).
 				-->
-				<svg class="emblem-svg" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-					<defs>
-						<mask id="lumos-moon-mask">
-							<rect width="240" height="80" fill="white" />
-							<!-- Maske sağdan büyük ısırık: dolu disk değil, ince hilal -->
-							<circle cx="118" cy="40" r="22.5" fill="black" />
-						</mask>
-					</defs>
-					<circle cx="62" cy="40" r="27" fill="#c8102e" mask="url(#lumos-moon-mask)" />
-					<g transform="translate(168 40) scale(0.36) rotate(-16) translate(-76 -36)">
-						<path
-							fill="#c8102e"
-							d="M 76 24.5 L 78.7 32.28 L 86.94 32.45 L 80.37 37.42 L 82.76 45.3 L 76 40.6 L 69.24 45.3 L 71.63 37.42 L 65.06 32.45 L 73.29 32.28 Z"
-						/>
-					</g>
-				</svg>
-			</div>
-		</div>
-		<div class="flag-stripe flag-stripe--bottom" aria-hidden="true"></div>
+				<mask id="lumos-hilal-mask">
+					<rect width="300" height="200" fill="white" />
+					<circle cx="118" cy="100" r="36" fill="black" />
+				</mask>
+			</defs>
+			<!-- Zemin -->
+			<rect width="300" height="200" fill="#ffffff" />
+			<!-- Üst / alt şerit (~%11, simetrik) -->
+			<rect x="0" y="0" width="300" height="22" fill="#c8102e" />
+			<rect x="0" y="178" width="300" height="22" fill="#c8102e" />
+			<!-- Ay-yıldız yalnızca beyaz bantta -->
+			<g clip-path="url(#lumos-white-band)">
+				<circle cx="88" cy="100" r="38" fill="#c8102e" mask="url(#lumos-hilal-mask)" />
+				<path
+					fill="#c8102e"
+					transform="rotate(-15 215 100)"
+					d="M 215.00 78.00 L 220.29 92.72 L 235.92 93.20 L 223.56 102.78 L 227.93 117.80 L 215.00 109.00 L 202.07 117.80 L 206.44 102.78 L 194.08 93.20 L 209.71 92.72 Z"
+				/>
+			</g>
+		</svg>
+	</div>
+	<div class="skull-mark" aria-hidden="true">
+		<svg class="skull-svg" viewBox="0 0 24 28" xmlns="http://www.w3.org/2000/svg">
+			<path
+				fill="currentColor"
+				d="M12 4C7.6 4 4 7.8 4 12.5c0 2.4 1.2 4.6 3 5.8V26h14v-7.7c1.8-1.2 3-3.4 3-5.8C24 7.8 20.4 4 16 4h-4z"
+			/>
+			<circle cx="9" cy="13" r="2.2" fill="var(--stage)" />
+			<circle cx="15" cy="13" r="2.2" fill="var(--stage)" />
+			<path fill="var(--stage)" d="M10 19h4v1.5c0 .8-.7 1.5-1.5 1.5h-1c-.8 0-1.5-.7-1.5-1.5V19z" />
+		</svg>
 	</div>
 	<h1 class="title">Lumos</h1>
 	<p class="tagline">Kıbrıs yayını aktif.</p>
@@ -79,10 +101,7 @@
 		text-align: center;
 	}
 
-	/* ~3:2 yatay bayrak; masaüstü max 420px, mobil max 86vw */
 	.flag-card {
-		display: grid;
-		grid-template-rows: 0.11fr 1fr 0.11fr;
 		width: min(86vw, 420px);
 		aspect-ratio: 3 / 2;
 		border-radius: 8px;
@@ -91,33 +110,27 @@
 		box-shadow:
 			0 0 0 1px rgba(0, 0, 0, 0.35),
 			0 16px 40px rgba(0, 0, 0, 0.45);
+		line-height: 0;
 		background: var(--paper);
 	}
 
-	.flag-stripe {
-		background: var(--tr-red);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-	}
-
-	.flag-field {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--paper);
-		min-height: 0;
-		padding: 0 4%;
-	}
-
-	.emblem-wrap {
-		width: 92%;
-		max-width: 21rem;
-		margin: 0 auto;
-	}
-
-	.emblem-svg {
+	.flag-svg {
 		display: block;
 		width: 100%;
+		height: 100%;
+	}
+
+	.skull-mark {
+		margin: 0.45rem auto 0.15rem;
+		color: rgba(255, 255, 255, 0.52);
+		line-height: 0;
+	}
+
+	.skull-svg {
+		display: block;
+		width: 26px;
 		height: auto;
+		margin: 0 auto;
 	}
 
 	.title {
