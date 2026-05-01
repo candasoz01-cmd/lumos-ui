@@ -22,14 +22,6 @@
 				<clipPath id="lumos-white-band">
 					<rect x="0" y="22" width="300" height="156" />
 				</clipPath>
-				<!--
-				  Hilal: kırmızı disk + maske — maske merkezi kırmızı merkeze yakın,
-				  r yeterince büyük ki merkez maskelenir (dolgun top kalmaz).
-				-->
-				<mask id="lumos-hilal-mask">
-					<rect width="300" height="200" fill="white" />
-					<circle cx="118" cy="100" r="36" fill="black" />
-				</mask>
 			</defs>
 			<!-- Zemin -->
 			<rect width="300" height="200" fill="#ffffff" />
@@ -38,24 +30,37 @@
 			<rect x="0" y="178" width="300" height="22" fill="#c8102e" />
 			<!-- Ay-yıldız yalnızca beyaz bantta -->
 			<g clip-path="url(#lumos-white-band)">
-				<circle cx="88" cy="100" r="38" fill="#c8102e" mask="url(#lumos-hilal-mask)" />
+				<!-- Hilal: evenodd — dış kırmızı daire − iç daire (matematiksel kesim) -->
+				<path
+					fill-rule="evenodd"
+					fill="#c8102e"
+					d="M 108 100 A 35 35 0 1 1 38 100 A 35 35 0 1 1 108 100 M 131 100 A 30 30 0 1 0 71 100 A 30 30 0 1 0 131 100"
+				/>
 				<path
 					fill="#c8102e"
-					transform="rotate(-15 215 100)"
-					d="M 215.00 78.00 L 220.29 92.72 L 235.92 93.20 L 223.56 102.78 L 227.93 117.80 L 215.00 109.00 L 202.07 117.80 L 206.44 102.78 L 194.08 93.20 L 209.71 92.72 Z"
+					transform="rotate(-14 222 100)"
+					d="M 222.00 81.50 L 226.41 93.93 L 239.59 94.28 L 229.13 102.32 L 232.87 114.97 L 222.00 107.50 L 211.13 114.97 L 214.87 102.32 L 204.41 94.28 L 217.59 93.93 Z"
 				/>
 			</g>
 		</svg>
 	</div>
 	<div class="skull-mark" aria-hidden="true">
-		<svg class="skull-svg" viewBox="0 0 24 28" xmlns="http://www.w3.org/2000/svg">
+		<svg class="skull-svg" viewBox="0 0 40 44" xmlns="http://www.w3.org/2000/svg">
+			<!-- Siluet: geniş kafa + çene; gözler oval; üçgen burun; diş çizgisi -->
 			<path
 				fill="currentColor"
-				d="M12 4C7.6 4 4 7.8 4 12.5c0 2.4 1.2 4.6 3 5.8V26h14v-7.7c1.8-1.2 3-3.4 3-5.8C24 7.8 20.4 4 16 4h-4z"
+				d="M20 5C10 5 4 12 4 21c0 5 2 9 5 11l1 10h6v-7h8v7h6l1-10c3-2 5-6 5-11 0-9-6-16-16-16z"
 			/>
-			<circle cx="9" cy="13" r="2.2" fill="var(--stage)" />
-			<circle cx="15" cy="13" r="2.2" fill="var(--stage)" />
-			<path fill="var(--stage)" d="M10 19h4v1.5c0 .8-.7 1.5-1.5 1.5h-1c-.8 0-1.5-.7-1.5-1.5V19z" />
+			<ellipse cx="14" cy="22" rx="4.8" ry="6" fill="var(--stage)" />
+			<ellipse cx="26" cy="22" rx="4.8" ry="6" fill="var(--stage)" />
+			<path fill="var(--stage)" d="M20 27.5 L16.5 35 L23.5 35 Z" />
+			<path
+				fill="none"
+				stroke="var(--stage)"
+				stroke-width="2"
+				stroke-linecap="round"
+				d="M14 38h12"
+			/>
 		</svg>
 	</div>
 	<h1 class="title">Lumos</h1>
@@ -128,7 +133,7 @@
 
 	.skull-svg {
 		display: block;
-		width: 26px;
+		width: 34px;
 		height: auto;
 		margin: 0 auto;
 	}
