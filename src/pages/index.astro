@@ -4,30 +4,21 @@
 <h1>Lumos Panel</h1>
 <input id="msg" style="width:420px;padding:10px;" placeholder="Sorunu yaz">
 <br><br>
-<button onclick="send()">Send</button>
+<button onclick="sendMessage()">Send</button>
 <pre id="out" style="margin:24px auto 0;max-width:700px;text-align:left;white-space:pre-wrap;"></pre>
-
 <script>
-async function send(){
+async function sendMessage(){
   const out = document.getElementById("out");
-  out.innerText = "Sending...";
+  out.innerText = "Gönderiliyor...";
   try {
     const m = document.getElementById("msg").value;
     const r = await fetch("https://lumos-core-2.onrender.com/chat", {
       method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "X-Kando-Token":"test123"
-      },
+      headers:{"Content-Type":"application/json"},
       body: JSON.stringify({message:m})
     });
     const text = await r.text();
-    try {
-      const j = JSON.parse(text);
-      out.innerText = j.reply || j.error || JSON.stringify(j, null, 2);
-    } catch {
-      out.innerText = "HTTP " + r.status + "\n" + text;
-    }
+    out.innerText = "HTTP " + r.status + "\n" + text;
   } catch(e) {
     out.innerText = "ERROR: " + e.message;
   }
