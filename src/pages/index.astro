@@ -62,61 +62,68 @@
 		text-align: center;
 	}
 
-	/* Beyaz bayrak kartı — ana odak */
+	/* Beyaz bayrak kartı — ana odak, daha geniş ve keskin */
 	.flag-card {
-		width: min(92vw, 22rem);
+		width: min(95vw, 28rem);
 		max-width: 100%;
-		border-radius: 10px;
+		border-radius: 12px;
 		overflow: hidden;
 		background: var(--paper);
-		border: 2px solid rgba(255, 255, 255, 0.25);
+		border: 3px solid rgba(255, 255, 255, 0.45);
 		box-shadow:
-			0 0 0 1px rgba(0, 0, 0, 0.2),
-			0 20px 50px rgba(0, 0, 0, 0.45),
-			0 6px 16px rgba(200, 16, 46, 0.25);
+			0 0 0 1px rgba(0, 0, 0, 0.35),
+			0 28px 60px rgba(0, 0, 0, 0.55),
+			0 8px 24px rgba(200, 16, 46, 0.35);
 	}
 
 	.flag-stripe {
-		height: clamp(2.75rem, 9vw, 4.25rem);
-		min-height: 2.75rem;
+		height: clamp(3.5rem, 12vw, 5.75rem);
+		min-height: 3.25rem;
 		background: var(--tr-red);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+		box-shadow:
+			inset 0 2px 0 rgba(255, 255, 255, 0.18),
+			inset 0 -1px 0 rgba(0, 0, 0, 0.12);
 	}
 
 	.flag-field {
-		min-height: clamp(11rem, 38vw, 15rem);
+		min-height: clamp(13rem, 44vw, 19rem);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: clamp(1rem, 4vw, 1.75rem) clamp(0.75rem, 3vw, 1.25rem);
+		padding: clamp(1.25rem, 5vw, 2rem) clamp(1rem, 4vw, 1.75rem);
 		background: var(--paper);
+		box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
 	}
 
 	.emblem {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: clamp(0.35rem, 2vw, 0.65rem);
-		transform: scale(1);
+		gap: clamp(0.5rem, 2.5vw, 0.85rem);
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
 	}
 
-	/* Ay — ölçek büyütüldü */
+	/* Ay — daha büyük, seçilebilir siluet */
 	.crescent {
 		display: block;
-		width: clamp(4rem, 18vw, 5.5rem);
-		height: clamp(4rem, 18vw, 5.5rem);
+		width: clamp(5.25rem, 26vw, 8rem);
+		height: clamp(5.25rem, 26vw, 8rem);
+		max-width: min(8rem, 28vw);
+		max-height: min(8rem, 28vw);
 		border-radius: 50%;
 		background: var(--tr-red);
-		box-shadow: clamp(0.65rem, 3.5vw, 1.05rem) 0 0 0 var(--paper);
+		box-shadow: clamp(0.85rem, 4.5vw, 1.35rem) 0 0 0 var(--paper);
 		transform: rotate(-18deg);
 		flex-shrink: 0;
 	}
 
-	/* Yıldız — ölçek büyütüldü */
+	/* Yıldız — ay ile orantılı, daha belirgin */
 	.star {
 		display: block;
-		width: clamp(3.25rem, 14vw, 4.25rem);
-		height: clamp(3.25rem, 14vw, 4.25rem);
+		width: clamp(4.25rem, 20vw, 6.25rem);
+		height: clamp(4.25rem, 20vw, 6.25rem);
+		max-width: min(6.25rem, 22vw);
+		max-height: min(6.25rem, 22vw);
 		background: var(--tr-red);
 		clip-path: polygon(
 			50% 0%,
@@ -130,7 +137,7 @@
 			0% 35%,
 			39% 35%
 		);
-		margin-left: clamp(-0.2rem, -1vw, -0.05rem);
+		margin-left: clamp(-0.25rem, -1.2vw, -0.05rem);
 		flex-shrink: 0;
 	}
 
