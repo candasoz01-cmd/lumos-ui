@@ -8,12 +8,30 @@
 </head>
 <body>
 <div class="page">
-	<div class="flag-card" role="img" aria-label="Kuzey Kıbrıs bayrağına benzer düzen: üst ve alt kırmızı şerit, ortada beyaz alan ve kırmızı ay-yıldız">
+	<div class="flag-card" role="img" aria-label="Üst ve alt ince kırmızı şeritler, ortada beyaz alan ve ay-yıldız">
 		<div class="flag-stripe flag-stripe--top" aria-hidden="true"></div>
 		<div class="flag-field">
-			<div class="emblem" aria-hidden="true">
-				<span class="crescent"></span>
-				<span class="star"></span>
+			<div class="emblem-wrap">
+				<!--
+				  Hilal: kırmızı tam daire + maske (siyah daire) ile beyaz alanı “ısırmış” gerçek hilal.
+				  Sol tarafta kalır; yıldız sağda, küçük ve ayrı.
+				-->
+				<svg class="emblem-svg" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<defs>
+						<mask id="lumos-moon-mask">
+							<rect width="240" height="80" fill="white" />
+							<!-- Maske sağdan büyük ısırık: dolu disk değil, ince hilal -->
+							<circle cx="118" cy="40" r="22.5" fill="black" />
+						</mask>
+					</defs>
+					<circle cx="62" cy="40" r="27" fill="#c8102e" mask="url(#lumos-moon-mask)" />
+					<g transform="translate(168 40) scale(0.36) rotate(-16) translate(-76 -36)">
+						<path
+							fill="#c8102e"
+							d="M 76 24.5 L 78.7 32.28 L 86.94 32.45 L 80.37 37.42 L 82.76 45.3 L 76 40.6 L 69.24 45.3 L 71.63 37.42 L 65.06 32.45 L 73.29 32.28 Z"
+						/>
+					</g>
+				</svg>
 			</div>
 		</div>
 		<div class="flag-stripe flag-stripe--bottom" aria-hidden="true"></div>
@@ -26,8 +44,7 @@
 		--tr-red: #c8102e;
 		--paper: #ffffff;
 		--ink: #141414;
-		--muted: #3d3d3d;
-		--stage: #1c1c1e;
+		--stage: #121214;
 	}
 
 	* {
@@ -62,83 +79,45 @@
 		text-align: center;
 	}
 
-	/* Beyaz bayrak kartı — ana odak, daha geniş ve keskin */
+	/* ~3:2 yatay bayrak; masaüstü max 420px, mobil max 86vw */
 	.flag-card {
-		width: min(95vw, 28rem);
-		max-width: 100%;
-		border-radius: 12px;
+		display: grid;
+		grid-template-rows: 0.11fr 1fr 0.11fr;
+		width: min(86vw, 420px);
+		aspect-ratio: 3 / 2;
+		border-radius: 8px;
 		overflow: hidden;
-		background: var(--paper);
-		border: 3px solid rgba(255, 255, 255, 0.45);
+		border: 2px solid rgba(255, 255, 255, 0.32);
 		box-shadow:
 			0 0 0 1px rgba(0, 0, 0, 0.35),
-			0 28px 60px rgba(0, 0, 0, 0.55),
-			0 8px 24px rgba(200, 16, 46, 0.35);
+			0 16px 40px rgba(0, 0, 0, 0.45);
+		background: var(--paper);
 	}
 
 	.flag-stripe {
-		height: clamp(3.5rem, 12vw, 5.75rem);
-		min-height: 3.25rem;
 		background: var(--tr-red);
-		box-shadow:
-			inset 0 2px 0 rgba(255, 255, 255, 0.18),
-			inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
 	}
 
 	.flag-field {
-		min-height: clamp(13rem, 44vw, 19rem);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: clamp(1.25rem, 5vw, 2rem) clamp(1rem, 4vw, 1.75rem);
 		background: var(--paper);
-		box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+		min-height: 0;
+		padding: 0 4%;
 	}
 
-	.emblem {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: clamp(0.5rem, 2.5vw, 0.85rem);
-		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+	.emblem-wrap {
+		width: 92%;
+		max-width: 21rem;
+		margin: 0 auto;
 	}
 
-	/* Ay — daha büyük, seçilebilir siluet */
-	.crescent {
+	.emblem-svg {
 		display: block;
-		width: clamp(5.25rem, 26vw, 8rem);
-		height: clamp(5.25rem, 26vw, 8rem);
-		max-width: min(8rem, 28vw);
-		max-height: min(8rem, 28vw);
-		border-radius: 50%;
-		background: var(--tr-red);
-		box-shadow: clamp(0.85rem, 4.5vw, 1.35rem) 0 0 0 var(--paper);
-		transform: rotate(-18deg);
-		flex-shrink: 0;
-	}
-
-	/* Yıldız — ay ile orantılı, daha belirgin */
-	.star {
-		display: block;
-		width: clamp(4.25rem, 20vw, 6.25rem);
-		height: clamp(4.25rem, 20vw, 6.25rem);
-		max-width: min(6.25rem, 22vw);
-		max-height: min(6.25rem, 22vw);
-		background: var(--tr-red);
-		clip-path: polygon(
-			50% 0%,
-			61% 35%,
-			100% 35%,
-			69% 59%,
-			82% 100%,
-			50% 74%,
-			18% 100%,
-			31% 59%,
-			0% 35%,
-			39% 35%
-		);
-		margin-left: clamp(-0.25rem, -1.2vw, -0.05rem);
-		flex-shrink: 0;
+		width: 100%;
+		height: auto;
 	}
 
 	.title {
@@ -147,14 +126,14 @@
 		font-weight: 700;
 		letter-spacing: -0.02em;
 		color: var(--paper);
-		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 	}
 
 	.tagline {
 		margin: 0;
 		font-size: 1.0625rem;
 		font-weight: 500;
-		color: rgba(255, 255, 255, 0.78);
+		color: rgba(255, 255, 255, 0.82);
 		max-width: 22rem;
 	}
 
