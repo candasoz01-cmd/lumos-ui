@@ -1,11 +1,30 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
----
-
-<Layout>
-	<Welcome />
-</Layout>
+<html>
+<body style="background:#0b1020;color:white;text-align:center;margin-top:100px;font-family:sans-serif;">
+<h1>Lumos Panel</h1>
+<input id="msg" style="width:420px;padding:10px;" placeholder="Sorunu yaz">
+<br><br>
+<button onclick="send()">Send</button>
+<pre id="out" style="margin:24px auto 0;max-width:700px;text-align:left;white-space:pre-wrap;"></pre>
+<script>
+async function send(){
+  const out = document.getElementById("out");
+  out.innerText = "Sending...";
+  try {
+    const m = document.getElementById("msg").value;
+    const r = await fetch("http://127.0.0.1:8765/chat", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "X-Kando-Token":"test123"
+      },
+      body: JSON.stringify({message:m})
+    });
+    const j = await r.json();
+    out.innerText = j.reply || j.error || JSON.stringify(j, null, 2);
+  } catch(e) {
+    out.innerText = "ERROR: " + e.message;
+  }
+}
+</script>
+</body>
+</html>
