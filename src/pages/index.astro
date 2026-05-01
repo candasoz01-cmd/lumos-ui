@@ -11,7 +11,7 @@ async function send(){
   out.innerText = "Sending...";
   try {
     const m = document.getElementById("msg").value;
-    const r = await fetch("http://127.0.0.1:8765/chat", {
+    const r = await fetch("BURAYA_NGROK_LINK/chat", {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
