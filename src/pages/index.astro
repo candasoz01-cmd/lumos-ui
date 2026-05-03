@@ -10,185 +10,8 @@
 </head>
 <body>
 <div class="page">
-	<div class="hero-visual" aria-hidden="true">
-		<svg
-			class="hero-svg"
-			viewBox="0 0 560 300"
-			xmlns="http://www.w3.org/2000/svg"
-			preserveAspectRatio="xMidYMid meet"
-		>
-			<defs>
-				<linearGradient id="glow-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-					<stop offset="0%" stop-color="#5eead4" stop-opacity="0.92" />
-					<stop offset="35%" stop-color="#14b8a6" stop-opacity="0.62" />
-					<stop offset="100%" stop-color="#fbbf24" stop-opacity="0.55" />
-				</linearGradient>
-				<radialGradient id="ocean-globe" cx="36%" cy="40%" r="75%">
-					<stop offset="0%" stop-color="#0c2a33" />
-					<stop offset="55%" stop-color="#030f14" />
-					<stop offset="100%" stop-color="#000508" />
-				</radialGradient>
-				<radialGradient id="med-sea" cx="45%" cy="45%" r="65%">
-					<stop offset="0%" stop-color="#5eead4" stop-opacity="0.55" />
-					<stop offset="70%" stop-color="#0e7490" stop-opacity="0.92" />
-					<stop offset="100%" stop-color="#0a4f5e" stop-opacity="0.98" />
-				</radialGradient>
-				<linearGradient id="cyprus-island" x1="0%" y1="0%" x2="100%" y2="100%">
-					<stop offset="0%" stop-color="#ffffff" />
-					<stop offset="100%" stop-color="#ecfeff" />
-				</linearGradient>
-				<filter id="cyprus-glow" x="-80%" y="-80%" width="260%" height="260%">
-					<feGaussianBlur in="SourceGraphic" stdDeviation="1" result="b" />
-					<feMerge>
-						<feMergeNode in="b" />
-						<feMergeNode in="SourceGraphic" />
-					</feMerge>
-				</filter>
-				<clipPath id="globe-clip">
-					<ellipse cx="280" cy="150" rx="200" ry="94" />
-				</clipPath>
-			</defs>
-			<!-- Diyagram dünya: koyu okyanus, birbirinden ayrı renkli kıtalar, üstte parlak Akdeniz -->
-			<g clip-path="url(#globe-clip)" class="world-silhouette">
-				<ellipse cx="280" cy="150" rx="200" ry="94" fill="url(#ocean-globe)" />
-				<ellipse cx="205" cy="152" rx="118" ry="88" fill="rgba(0, 0, 0, 0.22)" />
-				<!-- Amerika -->
-				<path
-					fill="#0d9488"
-					stroke="#fbbf24"
-					stroke-width="1.25"
-					d="M 96 160 C 78 95 118 48 172 55 C 216 62 230 108 218 152 C 208 192 182 232 152 240 C 112 248 82 218 76 178 C 72 142 82 118 96 160 Z"
-				/>
-				<!-- Afrika -->
-				<path
-					fill="#14532d"
-					stroke="#fbbf24"
-					stroke-width="1.15"
-					d="M 226 92 C 258 80 292 95 302 122 C 312 158 302 228 278 248 C 248 262 216 248 206 208 C 196 165 202 118 214 100 C 218 94 222 92 226 92 Z"
-				/>
-				<!-- Avrupa -->
-				<path
-					fill="#2dd4bf"
-					stroke="#134e4a"
-					stroke-width="1.05"
-					d="M 246 64 C 278 52 306 62 316 86 C 322 104 298 120 272 116 C 248 110 236 88 236 72 C 236 66 240 64 246 64 Z"
-				/>
-				<!-- Asya -->
-				<path
-					fill="#134e4a"
-					stroke="#99f6e4"
-					stroke-width="1.15"
-					d="M 306 72 C 378 58 448 88 468 132 C 488 178 468 212 422 220 C 368 230 318 198 298 152 C 282 118 288 82 306 72 Z"
-				/>
-				<!-- Avustralya -->
-				<path
-					fill="#166534"
-					stroke="#fbbf24"
-					stroke-width="1.05"
-					d="M 378 198 C 424 186 452 202 446 236 C 440 258 398 264 372 244 C 354 225 360 205 378 198 Z"
-				/>
-				<!-- Akdeniz havuzu: kara üstüne açık turkuaz (ada burada okunur) -->
-				<ellipse
-					cx="294"
-					cy="134"
-					rx="64"
-					ry="30"
-					fill="url(#med-sea)"
-					stroke="#99f6e4"
-					stroke-width="1.25"
-				/>
-				<!-- Küre grid -->
-				<g fill="none" stroke="rgba(255, 255, 255, 0.38)" stroke-width="0.9">
-					<ellipse cx="280" cy="150" rx="160" ry="72" />
-					<ellipse cx="280" cy="150" rx="122" ry="54" />
-					<ellipse cx="280" cy="150" rx="80" ry="34" />
-					<path d="M 104 150 H 456" stroke="#fbbf24" stroke-width="1.35" stroke-opacity="0.9" />
-					<path d="M 114 116 H 446" />
-					<path d="M 114 184 H 446" />
-					<path d="M 182 50 Q 280 150 182 250" />
-					<path d="M 232 50 Q 280 150 232 250" />
-					<path d="M 282 50 Q 280 150 282 250" stroke="#fbbf24" stroke-opacity="0.65" stroke-width="1.05" />
-					<path d="M 332 50 Q 280 150 332 250" />
-					<path d="M 382 50 Q 280 150 382 250" />
-				</g>
-			</g>
-			<ellipse
-				cx="280"
-				cy="150"
-				rx="200"
-				ry="94"
-				fill="none"
-				stroke="#fbbf24"
-				stroke-width="1.5"
-				stroke-opacity="0.82"
-			/>
-			<ellipse
-				cx="280"
-				cy="150"
-				rx="200"
-				ry="94"
-				fill="none"
-				stroke="#5eead4"
-				stroke-width="0.7"
-				stroke-opacity="0.5"
-			/>
-			<g class="rays" clip-path="url(#globe-clip)" fill="none" stroke="url(#glow-stroke)" stroke-width="0.72" stroke-linecap="round">
-				<line x1="306" y1="139" x2="84.0" y2="131.2" opacity="0.58" />
-				<line x1="306" y1="139" x2="248.7" y2="57.2" opacity="0.52" />
-				<line x1="306" y1="139" x2="323.2" y2="58.2" opacity="0.5" />
-				<line x1="306" y1="139" x2="410.4" y2="78.7" opacity="0.54" />
-				<line x1="306" y1="139" x2="452.0" y2="198.0" opacity="0.56" />
-				<line x1="306" y1="139" x2="333.2" y2="240.6" opacity="0.52" />
-				<line x1="306" y1="139" x2="250.7" y2="243.0" opacity="0.52" />
-			</g>
-			<!-- Kıbrıs: yatay küçük ada + KD uç; batıda halka/nokta; etiket bağlantı çizgisi -->
-			<g class="cyprus-mark">
-				<circle cx="274" cy="138" r="9" fill="none" stroke="#fbbf24" stroke-width="1.5" />
-				<circle cx="274" cy="138" r="3.6" fill="#ffffff" stroke="#5eead4" stroke-width="0.75" />
-				<path
-					class="cyprus-shape"
-					fill="url(#cyprus-island)"
-					stroke="#047857"
-					stroke-width="1.35"
-					filter="url(#cyprus-glow)"
-					d="M 286 133
-						L 318 131
-						L 322 136
-						L 318 142
-						L 292 144
-						L 284 139
-						Z"
-				/>
-				<path
-					fill="url(#cyprus-island)"
-					stroke="#047857"
-					stroke-width="1.2"
-					d="M 316 130 L 336 122 L 340 130 L 328 136 L 320 134 Z"
-				/>
-				<polyline
-					points="326,136 338,142 346,148"
-					fill="none"
-					stroke="#fbbf24"
-					stroke-width="1"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					opacity="0.85"
-				/>
-				<text
-					x="348"
-					y="154"
-					fill="#fffbeb"
-					font-size="11.5"
-					font-weight="700"
-					font-family="system-ui, -apple-system, Segoe UI, sans-serif"
-					stroke="rgba(2, 8, 12, 0.95)"
-					stroke-width="0.55"
-					paint-order="stroke fill"
-				>
-					Kıbrıs
-				</text>
-			</g>
-		</svg>
+	<div class="hero-visual">
+		<img src="/assets/lumos/lumos-last.png" alt="Project Lumos" class="hero-image" />
 	</div>
 
 	<h1 class="lumos-wordmark" aria-label="Lumos">Lumos</h1>
@@ -218,6 +41,50 @@
 			Bu yazılım bizim imzamız, barış ise ortak geleceğimizdir.
 		</p>
 	</article>
+
+	<section class="site-section" aria-labelledby="lumos-nedir-heading">
+		<h2 id="lumos-nedir-heading" class="site-section-title">Lumos nedir?</h2>
+		<p class="site-section-body">
+			Lumos, kullanıcının cihazı ve dijital işlemleri üzerinde daha bilinçli, kontrollü ve güvenli hareket etmesini amaçlayan bir yardımcı kontrol katmanıdır. Kullanıcının yerine karar vermez; yapılan işlemleri daha görünür, anlaşılır ve kontrollü hale getirmeyi hedefler.
+		</p>
+	</section>
+
+	<section class="site-section" aria-labelledby="cihazda-ne-saglar-heading">
+		<h2 id="cihazda-ne-saglar-heading" class="site-section-title">Kurulu olduğu cihazda ne sağlar?</h2>
+		<ul class="site-section-list">
+			<li>Cihazdaki işlem akışlarını daha anlaşılır hale getirmeyi amaçlar.</li>
+			<li>Kullanıcının fark etmeden riskli veya geri dönüşü zor adımlar atmasını önlemeye yardımcı olacak bir kontrol mantığı kurar.</li>
+			<li>Silme, değiştirme, yönlendirme veya dış sistemlere açılma gibi etkili işlemlerde kullanıcı onayını merkeze alır.</li>
+			<li>Cihazı yalnızca komut alan bir araç değil, kullanıcının kontrolünde çalışan bilinçli bir çalışma alanı olarak ele alır.</li>
+			<li>Hedefi, cihazın sahibini devre dışı bırakmak değil; sahibinin kararını daha güçlü ve görünür kılmaktır.</li>
+		</ul>
+	</section>
+
+	<section class="site-section" aria-labelledby="ne-kazanir-heading">
+		<h2 id="ne-kazanir-heading" class="site-section-title">Kullanıcı Lumos ile ne kazanır?</h2>
+		<ul class="site-section-list">
+			<li>Daha fazla kontrol.</li>
+			<li>Daha açık işlem görünürlüğü.</li>
+			<li>Daha az belirsizlik.</li>
+			<li>Geri dönüşü zor işlemlerde daha dikkatli ilerleme.</li>
+			<li>Kendi sınırlarını ve tercihlerini sisteme daha net yansıtma imkânı.</li>
+			<li>Teknolojiyle daha güvenli ve daha sakin çalışma hissi.</li>
+			<li>Otomasyonun hızını, insan onayı ve sorumluluğuyla dengeleme yaklaşımı.</li>
+		</ul>
+	</section>
+
+	<section class="site-section" aria-labelledby="temel-ilkeler-heading">
+		<h2 id="temel-ilkeler-heading" class="site-section-title">Temel ilkeler</h2>
+		<ul class="site-section-list">
+			<li>Karar kullanıcıdadır.</li>
+			<li>Lumos, kullanıcının yerine sahiplik iddia etmez.</li>
+			<li>Yıkıcı veya kalıcı işlemler açık onay olmadan ilerlememelidir.</li>
+			<li>Güven, sözle değil davranışla gösterilmelidir.</li>
+			<li>Hız, kontrolün önüne geçmemelidir.</li>
+			<li>Teknoloji insanı küçültmek için değil, insanın gücünü artırmak için kullanılmalıdır.</li>
+			<li>Cihaz, kullanıcıya rağmen değil kullanıcıyla birlikte çalışmalıdır.</li>
+		</ul>
+	</section>
 </div>
 <style is:global>
 	:root {
@@ -253,16 +120,6 @@
 		-webkit-font-smoothing: antialiased;
 	}
 
-	@keyframes ray-pulse {
-		0%,
-		100% {
-			opacity: 0.85;
-		}
-		50% {
-			opacity: 0.45;
-		}
-	}
-
 	.page {
 		min-height: 100vh;
 		display: flex;
@@ -274,38 +131,15 @@
 
 	.hero-visual {
 		width: min(92vw, 560px);
-		max-height: min(42vh, 300px);
+		max-width: 100%;
 		flex-shrink: 0;
 	}
 
-	.hero-svg {
+	.hero-image {
 		display: block;
 		width: 100%;
 		height: auto;
-		overflow: visible;
-	}
-
-	.hero-svg .rays line {
-		animation: ray-pulse 14s ease-in-out infinite;
-	}
-
-	.hero-svg .rays line:nth-child(2) {
-		animation-delay: -2.5s;
-	}
-	.hero-svg .rays line:nth-child(3) {
-		animation-delay: -5s;
-	}
-	.hero-svg .rays line:nth-child(4) {
-		animation-delay: -3.5s;
-	}
-	.hero-svg .rays line:nth-child(5) {
-		animation-delay: -6s;
-	}
-	.hero-svg .rays line:nth-child(6) {
-		animation-delay: -1.2s;
-	}
-	.hero-svg .rays line:nth-child(7) {
-		animation-delay: -3.8s;
+		max-width: 100%;
 	}
 
 	.lumos-wordmark {
@@ -372,6 +206,54 @@
 	}
 
 	.manifesto p:last-child {
+		margin-bottom: 0;
+	}
+
+	.site-section {
+		width: 100%;
+		max-width: 38rem;
+		padding: clamp(1rem, 3vw, 1.35rem) clamp(0.75rem, 3vw, 1rem);
+		border-radius: 12px;
+		background: rgba(8, 18, 24, 0.45);
+		border: 1px solid rgba(94, 234, 212, 0.12);
+		box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+	}
+
+	.site-section-title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.05rem, 3.2vw, 1.2rem);
+		font-weight: 600;
+		line-height: 1.35;
+		color: rgba(212, 165, 116, 0.92);
+		letter-spacing: -0.01em;
+	}
+
+	.site-section-body {
+		margin: 0;
+		font-size: clamp(0.9375rem, 2.8vw, 1.0625rem);
+		line-height: 1.65;
+		color: var(--ink-muted);
+		text-align: left;
+		overflow-wrap: anywhere;
+		hyphens: auto;
+	}
+
+	.site-section-list {
+		margin: 0;
+		padding-left: 1.15rem;
+		font-size: clamp(0.9375rem, 2.8vw, 1.0625rem);
+		line-height: 1.65;
+		color: var(--ink-muted);
+		text-align: left;
+	}
+
+	.site-section-list li {
+		margin: 0 0 0.6rem;
+		overflow-wrap: anywhere;
+		hyphens: auto;
+	}
+
+	.site-section-list li:last-child {
 		margin-bottom: 0;
 	}
 </style>
